@@ -1,21 +1,21 @@
-import React, { useRef } from "react";
+import React from "react";
 import {
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
-  Button,
-  Input,
-  Box,
-  IconButton,
+  Stack,
+  Flex,
+  Icon,
 } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
 import TopBar from "./components/topbar/TopBar";
 import ProgramContainer from "./containers/program/ProgramContainer";
+import { RiDashboardLine } from "react-icons/ri";
+import { FiUsers } from "react-icons/fi";
+import { IoIosTimer } from "react-icons/io";
 
 function App() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -33,20 +33,28 @@ function App() {
         finalFocusRef={btnRef}
       >
         <DrawerOverlay>
-          <DrawerContent>
+          <DrawerContent backgroundColor="black" color="white">
             <DrawerCloseButton />
-            <DrawerHeader>Create your account</DrawerHeader>
+            <DrawerHeader>MENU</DrawerHeader>
 
             <DrawerBody>
-              <Input placeholder="Type here..." />
+              <Stack spacing={2}>
+                <Flex
+                  alignItems="center"
+                  backgroundColor="#C4C4C4"
+                  padding={2}
+                  cursor="pointer"
+                >
+                  <Icon as={RiDashboardLine} marginRight={2} /> Dashboard
+                </Flex>
+                <Flex alignItems="center" padding={2} cursor="pointer">
+                  <Icon as={FiUsers} marginRight={2} /> Data User
+                </Flex>
+                <Flex alignItems="center" padding={2} cursor="pointer">
+                  <Icon as={IoIosTimer} marginRight={2} /> User Log
+                </Flex>
+              </Stack>
             </DrawerBody>
-
-            <DrawerFooter>
-              <Button variant="outline" mr={3} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button colorScheme="blue">Save</Button>
-            </DrawerFooter>
           </DrawerContent>
         </DrawerOverlay>
       </Drawer>
